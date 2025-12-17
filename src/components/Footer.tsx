@@ -55,7 +55,7 @@ const Footer = () => {
 
           {/* Copyright */}
           <p className="font-body text-sm text-muted-foreground">
-            © 2025 Mattérica
+            © 2024-2026 Mattérica
           </p>
         </div>
       </div>
