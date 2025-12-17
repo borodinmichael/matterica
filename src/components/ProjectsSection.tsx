@@ -194,7 +194,7 @@ const ProjectsSection = () => {
             transition={{ duration: 0.6 }}
             className="mb-4 font-body text-[11px] font-medium uppercase tracking-[0.3em] text-muted-foreground"
           >
-            Избранные работы
+            Наши проекты
           </motion.p>
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
