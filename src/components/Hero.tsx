@@ -1,5 +1,5 @@
 import logo from "@/assets/logo-matterica.png";
-import heroBg from "@/assets/hero-bg.jpg";
+import brandBg from "@/assets/brand-bg.png";
 
 const Hero = () => {
   return (
@@ -7,7 +7,7 @@ const Hero = () => {
       {/* Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroBg})` }}
+        style={{ backgroundImage: `url(${brandBg})` }}
       />
       
       {/* Gradient Overlay */}
