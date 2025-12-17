@@ -60,6 +60,24 @@ const translations = {
     "credits.cinematographer": "Оператор",
     "credits.producer": "Продюсер",
     
+    // Credits names - Bani
+    "credits.bani.director": "Михаил Бородин",
+    "credits.bani.screenplay": "Роман Салахутдинов",
+    "credits.bani.producers": "Ангелина Ашман, Полина Шевченко, Ирина Минакова, Михаил Бородин",
+    "credits.bani.cinematographers": "Владислав Кузнецов, Михаил Бородин, Роман Прудкин, Павел Краснов, Елена Юлина, Михаил Лошкарев, Александр Радов, Михаил Харламов",
+    "credits.bani.editing": "Артур Анаян, Владислав Кузнецов",
+    
+    // Credits names - Obschak
+    "credits.obschak.director": "Владислав Кузнецов",
+    "credits.obschak.screenplay": "Арина Макаренко, Игорь Залюбовин",
+    "credits.obschak.producers": "Михаил Бородин, Анастасия Евтушенко, Антон Кораблёв, Владимир Тодоров, Ксения Гофман",
+    "credits.obschak.cinematographer": "Михаил Лошкарев",
+    "credits.obschak.editing": "Павел Дятлов",
+    
+    // Credits names - Gypsy
+    "credits.gypsy.director": "—",
+    "credits.gypsy.producer": "—",
+    
     // About
     "about.label": "О студии",
     "about.title1": "Мы создаём",
@@ -123,6 +141,24 @@ const translations = {
     "credits.editing": "Editing",
     "credits.cinematographer": "Cinematographer",
     "credits.producer": "Producer",
+    
+    // Credits names - Bani
+    "credits.bani.director": "Mikhail Borodin",
+    "credits.bani.screenplay": "Roman Salakhutdinov",
+    "credits.bani.producers": "Angelina Ashman, Polina Shevchenko, Irina Minakova, Mikhail Borodin",
+    "credits.bani.cinematographers": "Vladislav Kuznetsov, Mikhail Borodin, Roman Prudkin, Pavel Krasnov, Elena Yulina, Mikhail Loshkarev, Aleksandr Radov, Mikhail Kharlamov",
+    "credits.bani.editing": "Artur Anayan, Vladislav Kuznetsov",
+    
+    // Credits names - Obschak
+    "credits.obschak.director": "Vladislav Kuznetsov",
+    "credits.obschak.screenplay": "Arina Makarenko, Igor Zalyubovin",
+    "credits.obschak.producers": "Mikhail Borodin, Anastasia Evtushenko, Anton Korablyov, Vladimir Todorov, Ksenia Gofman",
+    "credits.obschak.cinematographer": "Mikhail Loshkarev",
+    "credits.obschak.editing": "Pavel Dyatlov",
+    
+    // Credits names - Gypsy
+    "credits.gypsy.director": "—",
+    "credits.gypsy.producer": "—",
     
     // About
     "about.label": "About studio",

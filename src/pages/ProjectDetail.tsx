@@ -11,7 +11,7 @@ import posterGypsy from "@/assets/poster-gypsy.webp";
 
 interface Credit {
   roleKey: string;
-  name: string;
+  nameKey: string;
 }
 
 interface ProjectData {
@@ -41,11 +41,11 @@ const projectsData: Record<string, ProjectData> = {
     watchUrl: "https://kion.ru/video/movie/829481690",
     watchPlatform: "KION",
     credits: [
-      { roleKey: "credits.director", name: "Михаил Бородин" },
-      { roleKey: "credits.screenplay", name: "Роман Салахутдинов" },
-      { roleKey: "credits.producers", name: "Ангелина Ашман, Полина Шевченко, Ирина Минакова, Михаил Бородин" },
-      { roleKey: "credits.cinematographers", name: "Владислав Кузнецов, Михаил Бородин, Роман Прудкин, Павел Краснов, Елена Юлина, Михаил Лошкарев, Александр Радов, Михаил Харламов" },
-      { roleKey: "credits.editing", name: "Артур Анаян, Владислав Кузнецов" },
+      { roleKey: "credits.director", nameKey: "credits.bani.director" },
+      { roleKey: "credits.screenplay", nameKey: "credits.bani.screenplay" },
+      { roleKey: "credits.producers", nameKey: "credits.bani.producers" },
+      { roleKey: "credits.cinematographers", nameKey: "credits.bani.cinematographers" },
+      { roleKey: "credits.editing", nameKey: "credits.bani.editing" },
     ],
   },
   obschak: {
@@ -60,11 +60,11 @@ const projectsData: Record<string, ProjectData> = {
     watchUrl: "https://okkomovies.app.link/MslIJhoxJWb",
     watchPlatform: "OKKO",
     credits: [
-      { roleKey: "credits.director", name: "Владислав Кузнецов" },
-      { roleKey: "credits.screenplay", name: "Арина Макаренко, Игорь Залюбовин" },
-      { roleKey: "credits.producers", name: "Михаил Бородин, Анастасия Евтушенко, Антон Кораблёв, Владимир Тодоров, Ксения Гофман" },
-      { roleKey: "credits.cinematographer", name: "Михаил Лошкарев" },
-      { roleKey: "credits.editing", name: "Павел Дятлов" },
+      { roleKey: "credits.director", nameKey: "credits.obschak.director" },
+      { roleKey: "credits.screenplay", nameKey: "credits.obschak.screenplay" },
+      { roleKey: "credits.producers", nameKey: "credits.obschak.producers" },
+      { roleKey: "credits.cinematographer", nameKey: "credits.obschak.cinematographer" },
+      { roleKey: "credits.editing", nameKey: "credits.obschak.editing" },
     ],
   },
   gypsy: {
@@ -79,8 +79,8 @@ const projectsData: Record<string, ProjectData> = {
     watchUrl: "https://okkomovies.app.link/3tR88OB72Ub",
     watchPlatform: "OKKO",
     credits: [
-      { roleKey: "credits.director", name: "—" },
-      { roleKey: "credits.producer", name: "—" },
+      { roleKey: "credits.director", nameKey: "credits.gypsy.director" },
+      { roleKey: "credits.producer", nameKey: "credits.gypsy.producer" },
     ],
   },
 };
@@ -237,7 +237,7 @@ const ProjectDetail = () => {
                       {t(credit.roleKey)}
                     </p>
                     <div className="font-body text-sm uppercase tracking-wider text-foreground text-left">
-                      {credit.name.split(', ').map((name, i) => (
+                      {t(credit.nameKey).split(', ').map((name, i) => (
                         <p key={i}>{name}</p>
                       ))}
                     </div>
