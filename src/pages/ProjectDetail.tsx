@@ -156,30 +156,26 @@ const ProjectDetail = () => {
               </motion.p>
             </div>
 
-            {/* Right Column - Credits */}
+            {/* Right Column - Credits (Film End Credits Style) */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
               className="lg:pt-16"
             >
-              <h2 className="font-body text-[11px] font-medium uppercase tracking-[0.3em] text-muted-foreground mb-8">
-                Команда
-              </h2>
-              
-              <div className="space-y-6">
+              <div className="space-y-5">
                 {project.credits.map((credit, index) => (
                   <motion.div
                     key={credit.role}
                     initial={{ opacity: 0, y: 15 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
-                    className="border-b border-border/30 pb-4"
+                    className="grid grid-cols-[1fr_1fr] gap-6"
                   >
-                    <p className="font-body text-xs uppercase tracking-wider text-muted-foreground mb-1">
+                    <p className="font-body text-sm uppercase tracking-wider text-foreground text-right">
                       {credit.role}
                     </p>
-                    <p className="font-body text-base text-foreground">
+                    <p className="font-body text-sm uppercase tracking-wider text-foreground text-left">
                       {credit.name}
                     </p>
                   </motion.div>
