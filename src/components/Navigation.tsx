@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import logo from "@/assets/logo-white.png";
+import logo from "@/assets/logo-matterica.png";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);

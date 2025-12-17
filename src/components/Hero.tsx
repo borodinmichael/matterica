@@ -1,4 +1,4 @@
-import logo from "@/assets/logo-white.png";
+import logo from "@/assets/logo-matterica.png";
 import heroBg from "@/assets/hero-bg.jpg";
 
 const Hero = () => {
