@@ -16,8 +16,6 @@ const Hero = () => {
       {/* Gradient Overlay */}
       <div className="absolute inset-0 hero-gradient" />
       
-      {/* Film Grain */}
-      <div className="absolute inset-0 grain-overlay" />
       
       {/* Content */}
       <div className="relative z-10 flex h-full flex-col items-center justify-center px-6">

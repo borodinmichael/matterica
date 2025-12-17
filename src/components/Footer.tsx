@@ -2,11 +2,9 @@ import logo from "@/assets/logo-white.png";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const socialLinks = [
-  { name: "Instagram", url: "https://instagram.com/matterica" },
+  { name: "Instagram", url: "https://instagram.com/matterica.ru" },
   { name: "VK", url: "https://vk.com/matterica" },
   { name: "Telegram", url: "https://t.me/matterica" },
-  { name: "Vimeo", url: "https://vimeo.com/matterica" },
-  { name: "YouTube", url: "https://youtube.com/@matterica" },
 ];
 
 const Footer = () => {
@@ -26,7 +24,9 @@ const Footer = () => {
             <span className="text-muted-foreground">{t("footer.title2")}</span>
           </h2>
           <a
-            href="mailto:hello@matterica.com"
+            href="https://t.me/borodinmichael"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-block border border-foreground px-10 py-4 font-body text-sm uppercase tracking-widest transition-all duration-300 hover:bg-foreground hover:text-background"
           >
             {t("footer.cta")}
