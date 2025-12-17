@@ -6,6 +6,7 @@ import {
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 
+import aboutBg from "@/assets/about-bg.png";
 import backstage1 from "@/assets/backstage/backstage-1.jpg";
 import backstage2 from "@/assets/backstage/backstage-2.jpg";
 import backstage3 from "@/assets/backstage/backstage-3.jpg";
@@ -34,7 +35,11 @@ const AboutSection = () => {
   const { t } = useLanguage();
   
   return (
-    <section id="about" className="relative bg-secondary py-24 md:py-32">
+    <section 
+      id="about" 
+      className="relative py-24 md:py-32 bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: `url(${aboutBg})` }}
+    >
       <div className="mx-auto max-w-7xl px-6">
         <div>
           <p className="mb-4 font-body text-xs uppercase tracking-[0.3em] text-primary">
