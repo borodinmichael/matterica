@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ExternalLink, Play } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import posterBani from "@/assets/poster-bani.jpg";
@@ -21,6 +21,9 @@ interface ProjectData {
   fullDescription: string;
   poster: string;
   trailerUrl: string;
+  kinopoiskUrl: string;
+  watchUrl: string;
+  watchPlatform: string;
   credits: Credit[];
 }
 
@@ -33,6 +36,9 @@ const projectsData: Record<string, ProjectData> = {
     fullDescription: "Документальный фильм, погружающий зрителя в уникальный мир банных традиций разных народов. От русской бани до японских онсэнов, от турецких хаммамов до финских саун — путешествие по самым жарким местам планеты.",
     poster: posterBani,
     trailerUrl: "https://www.youtube.com/embed/3EOCHJR3WVk",
+    kinopoiskUrl: "https://www.kinopoisk.ru/film/5430490/",
+    watchUrl: "https://kion.ru/video/movie/829481690",
+    watchPlatform: "KION",
     credits: [
       { role: "Режиссёр", name: "Иван Петров" },
       { role: "Продюсер", name: "Мария Сидорова" },
@@ -49,6 +55,9 @@ const projectsData: Record<string, ProjectData> = {
     fullDescription: "Многосерийный документальный проект, раскрывающий историю организованной преступности в России. Эксклюзивные интервью, архивные материалы и глубокий анализ феномена, изменившего страну.",
     poster: posterObschak,
     trailerUrl: "https://www.youtube.com/embed/aAdrIWSAk7c",
+    kinopoiskUrl: "https://www.kinopoisk.ru/series/7577709/",
+    watchUrl: "https://okkomovies.app.link/MslIJhoxJWb",
+    watchPlatform: "OKKO",
     credits: [
       { role: "Режиссёр", name: "Сергей Николаев" },
       { role: "Продюсер", name: "Анна Белова" },
@@ -65,6 +74,9 @@ const projectsData: Record<string, ProjectData> = {
     fullDescription: "Уникальный документальный проект, сочетающий глубокое погружение в цыганскую культуру с элементами стендап-комедии. Честный и откровенный взгляд изнутри на жизнь одного из самых загадочных народов.",
     poster: posterGypsy,
     trailerUrl: "https://www.youtube.com/embed/LbuLHzZFQKw",
+    kinopoiskUrl: "https://www.kinopoisk.ru/series/8123353/",
+    watchUrl: "https://okkomovies.app.link/3tR88OB72Ub",
+    watchPlatform: "OKKO",
     credits: [
       { role: "Режиссёр", name: "Артём Васильев" },
       { role: "Продюсер", name: "Ольга Кузнецова" },
@@ -129,6 +141,28 @@ const ProjectDetail = () => {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             />
+          </div>
+          
+          {/* Action Buttons */}
+          <div className="flex flex-wrap gap-4 mt-6">
+            <a
+              href={project.watchUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-foreground text-background font-body text-sm font-medium uppercase tracking-wider hover:bg-foreground/90 transition-colors"
+            >
+              <Play className="w-4 h-4" />
+              Смотреть на {project.watchPlatform}
+            </a>
+            <a
+              href={project.kinopoiskUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 border border-foreground/20 text-foreground font-body text-sm font-medium uppercase tracking-wider hover:bg-foreground/10 transition-colors"
+            >
+              <ExternalLink className="w-4 h-4" />
+              Страница на Кинопоиске
+            </a>
           </div>
         </div>
       </motion.div>
