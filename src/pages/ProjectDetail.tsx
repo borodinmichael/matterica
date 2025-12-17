@@ -5,9 +5,9 @@ import { ArrowLeft, ExternalLink, Play, Star } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { useLanguage } from "@/contexts/LanguageContext";
-import posterBani from "@/assets/poster-bani.jpg";
-import posterObschak from "@/assets/poster-obschak.webp";
-import posterGypsy from "@/assets/poster-gypsy.webp";
+import posterBani from "@/assets/poster-bani.png";
+import posterObschak from "@/assets/poster-obschak.png";
+import posterGypsy from "@/assets/poster-gypsy.png";
 
 interface Credit {
   roleKey: string;

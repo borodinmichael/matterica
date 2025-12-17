@@ -1,9 +1,9 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Link } from "react-router-dom";
-import posterBani from "@/assets/poster-bani.jpg";
-import posterObschak from "@/assets/poster-obschak.webp";
-import posterGypsy from "@/assets/poster-gypsy.webp";
+import posterBani from "@/assets/poster-bani.png";
+import posterObschak from "@/assets/poster-obschak.png";
+import posterGypsy from "@/assets/poster-gypsy.png";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 interface Project {
