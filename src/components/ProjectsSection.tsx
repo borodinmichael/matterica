@@ -19,7 +19,7 @@ const projects: Project[] = [
   {
     id: 1,
     title: "Бани",
-    subtitle: "KION • 2024",
+    subtitle: "KION • 2023",
     description: "Жаркий документальный фильм о банной культуре разных стран мира",
     image: posterBani,
     slug: "bani",
