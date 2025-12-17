@@ -27,7 +27,7 @@ const projects: Project[] = [
   {
     id: 2,
     title: "Общак",
-    subtitle: "OKKO • ОСЕНЬ 2024",
+    subtitle: "OKKO • СЕНТЯБРЬ 2024",
     description: "Документальный сериал о главной ОПГ России",
     image: posterObschak,
     slug: "obschak",
