@@ -34,6 +34,8 @@ const translations = {
     "projects.watchOn": "Смотреть на",
     "projects.kinopoisk": "Страница на Кинопоиске",
     "projects.trailer": "Трейлер",
+    "projects.kinopoiskRating": "Рейтинг Кинопоиска",
+    "projects.outOf": "из",
     
     // Project details
     "bani.title": "Бани",
@@ -116,6 +118,8 @@ const translations = {
     "projects.watchOn": "Watch on",
     "projects.kinopoisk": "Kinopoisk page",
     "projects.trailer": "Trailer",
+    "projects.kinopoiskRating": "Kinopoisk Rating",
+    "projects.outOf": "out of",
     
     // Project details
     "bani.title": "Baths",
