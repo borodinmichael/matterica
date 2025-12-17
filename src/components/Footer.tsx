@@ -2,7 +2,7 @@ import logo from "@/assets/logo-white.png";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const socialLinks = [
-  { name: "Instagram", url: "https://instagram.com/matterica.ru" },
+  { name: "Instagram", url: "https://instagram.com/matterica.film" },
   { name: "VK", url: "https://vk.com/matterica" },
   { name: "Telegram", url: "https://t.me/matterica" },
 ];
