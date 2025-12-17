@@ -1,4 +1,51 @@
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
+/* Font imports */
+@font-face {
+  font-family: 'Druk Text Cyr';
+  src: url('/fonts/Druk_Text_Cyr_Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Druk Text Cyr';
+  src: url('/fonts/Druk_Text_Cyr_Heavy.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Onest';
+  src: url('/fonts/Onest-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Onest';
+  src: url('/fonts/Onest-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Onest';
+  src: url('/fonts/Onest-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Onest';
+  src: url('/fonts/Onest-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
 
 @tailwind base;
 @tailwind components;
@@ -6,57 +53,60 @@
 
 @layer base {
   :root {
-    --background: 0 0% 3%;
-    --foreground: 0 0% 98%;
+    /* Mattérica Brand Colors */
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
 
-    --card: 0 0% 6%;
-    --card-foreground: 0 0% 98%;
+    --card: 0 0% 4%;
+    --card-foreground: 0 0% 100%;
 
-    --popover: 0 0% 6%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 0 0% 4%;
+    --popover-foreground: 0 0% 100%;
 
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 3%;
+    --primary: 180 100% 47%;  /* Electric Blue #00F0F */
+    --primary-foreground: 0 0% 0%;
 
-    --secondary: 0 0% 12%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 100%;
 
     --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 60%;
+    --muted-foreground: 0 0% 70%;
 
-    --accent: 30 100% 50%;
-    --accent-foreground: 0 0% 3%;
+    --accent: 240 100% 50%;  /* Blue Screen #0000FF */
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 15%;
+    --border: 0 0% 20%;
     --input: 0 0% 15%;
-    --ring: 0 0% 98%;
+    --ring: 180 100% 47%;
 
     --radius: 0px;
 
     /* Custom design tokens */
-    --font-display: 'Syne', sans-serif;
-    --font-body: 'Inter', sans-serif;
+    --font-display: 'Druk Text Cyr', sans-serif;
+    --font-body: 'Onest', sans-serif;
     
-    --gradient-hero: linear-gradient(180deg, hsl(0 0% 0% / 0.4) 0%, hsl(0 0% 0% / 0.8) 100%);
-    --gradient-card: linear-gradient(180deg, hsl(0 0% 8%) 0%, hsl(0 0% 4%) 100%);
+    --gradient-hero: linear-gradient(180deg, hsl(0 0% 0% / 0.3) 0%, hsl(0 0% 0% / 0.9) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 6%) 0%, hsl(0 0% 2%) 100%);
+    --gradient-electric: linear-gradient(135deg, hsl(180 100% 47%) 0%, hsl(240 100% 50%) 100%);
     
-    --shadow-glow: 0 0 60px hsl(30 100% 50% / 0.15);
+    --shadow-glow: 0 0 60px hsl(180 100% 47% / 0.2);
+    --shadow-electric: 0 0 40px hsl(180 100% 47% / 0.3);
     --shadow-card: 0 20px 60px hsl(0 0% 0% / 0.5);
     
     --transition-smooth: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-fast: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
-    --sidebar-background: 0 0% 6%;
-    --sidebar-foreground: 0 0% 98%;
-    --sidebar-primary: 0 0% 98%;
-    --sidebar-primary-foreground: 0 0% 3%;
-    --sidebar-accent: 0 0% 12%;
-    --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-border: 0 0% 15%;
-    --sidebar-ring: 0 0% 98%;
+    --sidebar-background: 0 0% 4%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 180 100% 47%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 0 0% 10%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 0 0% 20%;
+    --sidebar-ring: 180 100% 47%;
   }
 }
 
@@ -72,16 +122,21 @@
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-body);
+    font-weight: 400;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
   }
 }
 
 @layer utilities {
   .font-display {
     font-family: var(--font-display);
+    text-transform: uppercase;
   }
   
   .font-body {
@@ -90,7 +145,12 @@
 
   .text-gradient {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(90deg, hsl(0 0% 98%) 0%, hsl(0 0% 60%) 100%);
+    background-image: linear-gradient(90deg, hsl(0 0% 100%) 0%, hsl(0 0% 60%) 100%);
+  }
+
+  .text-gradient-electric {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-electric);
   }
 
   .hero-gradient {
@@ -103,6 +163,20 @@
 
   .glow-accent {
     box-shadow: var(--shadow-glow);
+  }
+
+  .glow-electric {
+    box-shadow: var(--shadow-electric);
+  }
+
+  /* Brand label style */
+  .brand-label {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: hsl(var(--primary));
   }
 }
 
@@ -167,6 +241,15 @@
   90% { transform: translate(-1%, 7%); }
 }
 
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px hsl(180 100% 47% / 0.2);
+  }
+  50% {
+    box-shadow: 0 0 40px hsl(180 100% 47% / 0.4);
+  }
+}
+
 .animate-fade-in-up {
   animation: fadeInUp 0.8s ease-out forwards;
 }
@@ -185,6 +268,10 @@
 
 .animate-float {
   animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
 }
 
 /* Stagger delays */

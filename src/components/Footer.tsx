@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="mx-auto max-w-7xl px-6">
         {/* Contact CTA */}
         <div className="mb-24 text-center">
-          <p className="mb-4 font-body text-xs uppercase tracking-[0.3em] text-accent">
+          <p className="mb-4 font-body text-xs uppercase tracking-[0.3em] text-primary">
             Начнём проект
           </p>
           <h2 className="mb-8 font-display text-4xl font-bold tracking-tight md:text-6xl lg:text-7xl">
@@ -42,7 +42,7 @@ const Footer = () => {
 
           {/* Copyright */}
           <p className="font-body text-sm text-muted-foreground">
-            © 2024 Matterica
+            © 2025 Mattérica
           </p>
         </div>
       </div>
