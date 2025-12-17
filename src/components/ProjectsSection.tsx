@@ -202,7 +202,7 @@ const ProjectsSection = () => {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="font-display text-5xl font-bold tracking-tight text-foreground md:text-7xl lg:text-8xl"
           >
-            Фильмы
+            Наши проекты
           </motion.h2>
         </div>
       </div>
