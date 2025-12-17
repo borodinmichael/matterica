@@ -4,12 +4,13 @@ import { Link } from "react-router-dom";
 import posterBani from "@/assets/poster-bani.jpg";
 import posterObschak from "@/assets/poster-obschak.webp";
 import posterGypsy from "@/assets/poster-gypsy.webp";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface Project {
   id: number;
-  title: string;
-  subtitle: string;
-  description: string;
+  titleKey: string;
+  subtitleKey: string;
+  descriptionKey: string;
   image: string;
   isUpcoming?: boolean;
   slug?: string;
@@ -18,25 +19,25 @@ interface Project {
 const films: Project[] = [
   {
     id: 1,
-    title: "Бани",
-    subtitle: "KION • ДЕКАБРЬ 2023",
-    description: "Жаркий документальный фильм о банной культуре разных стран мира",
+    titleKey: "bani.title",
+    subtitleKey: "bani.subtitle",
+    descriptionKey: "bani.description",
     image: posterBani,
     slug: "bani",
   },
   {
     id: 2,
-    title: "Скоро",
-    subtitle: "ПРЕМЬЕРА 2026",
-    description: "Новый документальный фильм в производстве",
+    titleKey: "projects.upcoming",
+    subtitleKey: "projects.premiere2026",
+    descriptionKey: "projects.upcomingFilm",
     image: posterObschak,
     isUpcoming: true,
   },
   {
     id: 3,
-    title: "Скоро",
-    subtitle: "ПРЕМЬЕРА 2026",
-    description: "Новый документальный фильм в производстве",
+    titleKey: "projects.upcoming",
+    subtitleKey: "projects.premiere2026",
+    descriptionKey: "projects.upcomingFilm",
     image: posterGypsy,
     isUpcoming: true,
   },
@@ -45,25 +46,25 @@ const films: Project[] = [
 const series: Project[] = [
   {
     id: 4,
-    title: "Общак",
-    subtitle: "OKKO • СЕНТЯБРЬ 2024",
-    description: "Документальный сериал о главной ОПГ России",
+    titleKey: "obschak.title",
+    subtitleKey: "obschak.subtitle",
+    descriptionKey: "obschak.description",
     image: posterObschak,
     slug: "obschak",
   },
   {
     id: 5,
-    title: "Быть цыганом",
-    subtitle: "OKKO • АПРЕЛЬ 2024",
-    description: "Документальный сериал в формате Stand Up",
+    titleKey: "gypsy.title",
+    subtitleKey: "gypsy.subtitle",
+    descriptionKey: "gypsy.description",
     image: posterGypsy,
     slug: "gypsy",
   },
   {
     id: 6,
-    title: "Скоро",
-    subtitle: "ПРЕМЬЕРА 2026",
-    description: "Новый документальный сериал в производстве",
+    titleKey: "projects.upcoming",
+    subtitleKey: "projects.premiere2026",
+    descriptionKey: "projects.upcomingSeries",
     image: posterBani,
     isUpcoming: true,
   },
@@ -73,6 +74,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const isEven = index % 2 === 0;
+  const { t } = useLanguage();
 
   return (
     <motion.div
@@ -97,7 +99,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
             >
               <motion.img
                 src={project.image}
-                alt={project.title}
+                alt={t(project.titleKey)}
                 className="h-full w-full object-cover"
                 whileHover={{ scale: 1.08 }}
                 transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
@@ -113,7 +115,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
             >
               <motion.img
                 src={project.image}
-                alt={project.title}
+                alt={t(project.titleKey)}
                 className={`h-full w-full object-cover ${
                   project.isUpcoming ? "blur-md brightness-50" : ""
                 }`}
@@ -126,7 +128,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
             {project.isUpcoming && (
               <div className="absolute inset-0 flex items-center justify-center">
                 <span className="font-display text-2xl font-light tracking-wider text-foreground/90">
-                  В производстве
+                  {t("projects.inProduction")}
                 </span>
               </div>
             )}
@@ -146,7 +148,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
           transition={{ duration: 0.6, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
           className="mb-5 font-body text-[11px] font-medium uppercase tracking-[0.3em] text-muted-foreground"
         >
-          {project.subtitle}
+          {t(project.subtitleKey)}
         </motion.p>
         
         <motion.h3 
@@ -157,12 +159,12 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
         >
           {project.slug ? (
             <Link to={`/projects/${project.slug}`} className="relative inline-block">
-              {project.title}
+              {t(project.titleKey)}
               <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-foreground transition-all duration-500 group-hover:w-full" />
             </Link>
           ) : (
             <span className="relative inline-block">
-              {project.title}
+              {t(project.titleKey)}
             </span>
           )}
         </motion.h3>
@@ -175,16 +177,17 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
             !isEven ? "lg:max-w-sm" : "max-w-sm"
           }`}
         >
-          {project.description}
+          {t(project.descriptionKey)}
         </motion.p>
       </div>
     </motion.div>
   );
 };
 
-const SectionHeader = ({ label, title }: { label: string; title: string }) => {
+const SectionHeader = ({ labelKey, titleKey }: { labelKey: string; titleKey: string }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
+  const { t } = useLanguage();
 
   return (
     <div ref={ref} className="px-6 pb-16 pt-32 md:px-12 md:pb-24 md:pt-40 lg:px-20">
@@ -195,7 +198,7 @@ const SectionHeader = ({ label, title }: { label: string; title: string }) => {
           transition={{ duration: 0.6 }}
           className="mb-4 font-body text-[11px] font-medium uppercase tracking-[0.3em] text-muted-foreground"
         >
-          {label}
+          {t(labelKey)}
         </motion.p>
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
@@ -203,7 +206,7 @@ const SectionHeader = ({ label, title }: { label: string; title: string }) => {
           transition={{ duration: 0.8, delay: 0.1 }}
           className="font-display text-5xl font-bold tracking-tight text-foreground md:text-7xl lg:text-8xl"
         >
-          {title}
+          {t(titleKey)}
         </motion.h2>
       </div>
     </div>
@@ -214,7 +217,7 @@ const ProjectsSection = () => {
   return (
     <section id="works" className="relative bg-background">
       {/* Films Section */}
-      <SectionHeader label="Наши проекты" title="Фильмы" />
+      <SectionHeader labelKey="projects.label" titleKey="projects.films" />
       <div className="space-y-24 px-6 pb-32 md:space-y-32 md:px-12 lg:space-y-40 lg:px-20 xl:space-y-48">
         {films.map((project, index) => (
           <div key={project.id} className="mx-auto max-w-7xl">
@@ -224,7 +227,7 @@ const ProjectsSection = () => {
       </div>
 
       {/* Series Section */}
-      <SectionHeader label="Наши проекты" title="Сериалы" />
+      <SectionHeader labelKey="projects.label" titleKey="projects.series" />
       <div className="space-y-24 px-6 pb-32 md:space-y-32 md:px-12 lg:space-y-40 lg:px-20 xl:space-y-48">
         {series.map((project, index) => (
           <div key={project.id} className="mx-auto max-w-7xl">

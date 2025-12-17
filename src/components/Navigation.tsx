@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import logo from "@/assets/logo-matterica.png";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { language, setLanguage, t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,9 +16,9 @@ const Navigation = () => {
   }, []);
 
   const navLinks = [
-    { label: "Работы", href: "#works" },
-    { label: "О нас", href: "#about" },
-    { label: "Контакты", href: "#contact" },
+    { label: t("nav.works"), href: "#works" },
+    { label: t("nav.about"), href: "#about" },
+    { label: t("nav.contacts"), href: "#contact" },
   ];
 
   return (
@@ -46,6 +48,27 @@ const Navigation = () => {
               {link.label}
             </a>
           ))}
+          
+          {/* Language Switcher */}
+          <div className="flex items-center gap-1 font-body text-sm uppercase tracking-wider">
+            <button
+              onClick={() => setLanguage("en")}
+              className={`transition-colors duration-300 ${
+                language === "en" ? "text-foreground" : "text-foreground/40 hover:text-foreground/70"
+              }`}
+            >
+              EN
+            </button>
+            <span className="text-foreground/30">|</span>
+            <button
+              onClick={() => setLanguage("ru")}
+              className={`transition-colors duration-300 ${
+                language === "ru" ? "text-foreground" : "text-foreground/40 hover:text-foreground/70"
+              }`}
+            >
+              RU
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu Button */}
@@ -77,6 +100,27 @@ const Navigation = () => {
               {link.label}
             </a>
           ))}
+          
+          {/* Mobile Language Switcher */}
+          <div className="flex items-center gap-3 font-body text-lg uppercase tracking-wider pt-4">
+            <button
+              onClick={() => setLanguage("en")}
+              className={`transition-colors duration-300 ${
+                language === "en" ? "text-foreground" : "text-foreground/40 hover:text-foreground/70"
+              }`}
+            >
+              EN
+            </button>
+            <span className="text-foreground/30">|</span>
+            <button
+              onClick={() => setLanguage("ru")}
+              className={`transition-colors duration-300 ${
+                language === "ru" ? "text-foreground" : "text-foreground/40 hover:text-foreground/70"
+              }`}
+            >
+              RU
+            </button>
+          </div>
         </div>
       </div>
     </nav>

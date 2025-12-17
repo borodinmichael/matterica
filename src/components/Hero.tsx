@@ -1,7 +1,10 @@
 import logo from "@/assets/logo-matterica.png";
 import brandBg from "@/assets/brand-bg.png";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Hero = () => {
+  const { t } = useLanguage();
+  
   return (
     <section className="relative h-screen w-full overflow-hidden">
       {/* Background Image */}
@@ -29,7 +32,7 @@ const Hero = () => {
         
         {/* Tagline */}
         <p className="mt-8 text-center font-body text-sm uppercase tracking-[0.3em] text-muted-foreground animate-fade-in-up opacity-0 delay-500">
-          Documentary film studio
+          {t("hero.tagline")}
         </p>
       </div>
       
@@ -37,7 +40,7 @@ const Hero = () => {
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-fade-in opacity-0 delay-600">
         <div className="flex flex-col items-center gap-3">
           <span className="font-body text-xs uppercase tracking-widest text-muted-foreground">
-            Scroll
+            {t("hero.scroll")}
           </span>
           <div className="h-12 w-px bg-gradient-to-b from-foreground/50 to-transparent" />
         </div>
