@@ -32,7 +32,7 @@ const projectsData: Record<string, ProjectData> = {
     description: "Жаркий документальный фильм о банной культуре разных стран мира",
     fullDescription: "Документальный фильм, погружающий зрителя в уникальный мир банных традиций разных народов. От русской бани до японских онсэнов, от турецких хаммамов до финских саун — путешествие по самым жарким местам планеты.",
     poster: posterBani,
-    trailerUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    trailerUrl: "https://www.youtube.com/embed/3EOCHJR3WVk",
     credits: [
       { role: "Режиссёр", name: "Иван Петров" },
       { role: "Продюсер", name: "Мария Сидорова" },
@@ -48,7 +48,7 @@ const projectsData: Record<string, ProjectData> = {
     description: "Документальный сериал о главной ОПГ России",
     fullDescription: "Многосерийный документальный проект, раскрывающий историю организованной преступности в России. Эксклюзивные интервью, архивные материалы и глубокий анализ феномена, изменившего страну.",
     poster: posterObschak,
-    trailerUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    trailerUrl: "https://www.youtube.com/embed/aAdrIWSAk7c",
     credits: [
       { role: "Режиссёр", name: "Сергей Николаев" },
       { role: "Продюсер", name: "Анна Белова" },
@@ -64,7 +64,7 @@ const projectsData: Record<string, ProjectData> = {
     description: "Документальный сериал в формате Stand Up",
     fullDescription: "Уникальный документальный проект, сочетающий глубокое погружение в цыганскую культуру с элементами стендап-комедии. Честный и откровенный взгляд изнутри на жизнь одного из самых загадочных народов.",
     poster: posterGypsy,
-    trailerUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    trailerUrl: "https://www.youtube.com/embed/LbuLHzZFQKw",
     credits: [
       { role: "Режиссёр", name: "Артём Васильев" },
       { role: "Продюсер", name: "Ольга Кузнецова" },
