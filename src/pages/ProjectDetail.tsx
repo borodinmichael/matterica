@@ -234,9 +234,11 @@ const ProjectDetail = () => {
                     <p className="font-body text-sm uppercase tracking-wider text-foreground text-right">
                       {credit.role}
                     </p>
-                    <p className="font-body text-sm uppercase tracking-wider text-foreground text-left">
-                      {credit.name}
-                    </p>
+                    <div className="font-body text-sm uppercase tracking-wider text-foreground text-left">
+                      {credit.name.split(', ').map((name, i) => (
+                        <p key={i}>{name}</p>
+                      ))}
+                    </div>
                   </motion.div>
                 ))}
               </div>
