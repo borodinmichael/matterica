@@ -29,7 +29,7 @@ const Hero = () => {
         
         {/* Tagline */}
         <p className="mt-8 text-center font-body text-sm uppercase tracking-[0.3em] text-muted-foreground animate-fade-in-up opacity-0 delay-500">
-          Creative Production Studio
+          Documentary film studio
         </p>
       </div>
       
