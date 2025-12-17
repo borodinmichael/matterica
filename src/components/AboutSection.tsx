@@ -14,7 +14,7 @@ const AboutSection = () => {
         <div className="grid gap-16 lg:grid-cols-2 lg:gap-24">
           {/* Left Column - Text */}
           <div>
-            <p className="mb-4 font-body text-xs uppercase tracking-[0.3em] text-accent">
+            <p className="mb-4 font-body text-xs uppercase tracking-[0.3em] text-primary">
               О студии
             </p>
             <h2 className="mb-8 font-display text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
@@ -24,7 +24,7 @@ const AboutSection = () => {
             </h2>
             <div className="space-y-6 font-body text-lg leading-relaxed text-muted-foreground">
               <p>
-                Matterica — это креативная продакшн-студия полного цикла. Мы
+                Mattérica — это креативная продакшн-студия полного цикла. Мы
                 специализируемся на создании визуального контента, который
                 запоминается и вызывает эмоции.
               </p>
@@ -45,9 +45,9 @@ const AboutSection = () => {
               {services.map((service, index) => (
                 <li
                   key={service}
-                  className="group flex items-center justify-between border-b border-border pb-4 transition-colors duration-300 hover:border-accent"
+                  className="group flex items-center justify-between border-b border-border pb-4 transition-colors duration-300 hover:border-primary"
                 >
-                  <span className="font-display text-xl font-medium tracking-tight transition-colors duration-300 group-hover:text-accent md:text-2xl">
+                  <span className="font-display text-xl font-medium tracking-tight transition-colors duration-300 group-hover:text-primary md:text-2xl">
                     {service}
                   </span>
                   <span className="font-body text-sm text-muted-foreground">
@@ -68,7 +68,7 @@ const AboutSection = () => {
             { value: "30+", label: "В команде" },
           ].map((stat) => (
             <div key={stat.label} className="text-center">
-              <p className="font-display text-4xl font-bold tracking-tight text-accent md:text-5xl">
+              <p className="font-display text-4xl font-bold tracking-tight text-primary md:text-5xl">
                 {stat.value}
               </p>
               <p className="mt-2 font-body text-sm uppercase tracking-widest text-muted-foreground">

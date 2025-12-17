@@ -59,8 +59,8 @@ export default {
         },
       },
       fontFamily: {
-        display: ['Syne', 'sans-serif'],
-        body: ['Inter', 'sans-serif'],
+        display: ['Druk Text Cyr', 'sans-serif'],
+        body: ['Onest', 'sans-serif'],
       },
       borderRadius: {
         lg: "var(--radius)",
