@@ -34,7 +34,7 @@ const LoadingAnimation = ({ onComplete }: LoadingAnimationProps) => {
         autoPlay
         muted
         playsInline
-        className="w-[300px] md:w-[400px] lg:w-[500px] h-auto"
+        className="w-full h-full object-cover"
       />
     </div>
   );
