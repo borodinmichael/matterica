@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { Link } from "react-router-dom";
 import posterBani from "@/assets/poster-bani.jpg";
 import posterObschak from "@/assets/poster-obschak.webp";
 import posterGypsy from "@/assets/poster-gypsy.webp";
@@ -11,6 +12,7 @@ interface Project {
   description: string;
   image: string;
   isUpcoming?: boolean;
+  slug?: string;
 }
 
 const projects: Project[] = [
@@ -20,6 +22,7 @@ const projects: Project[] = [
     subtitle: "KION • 2024",
     description: "Жаркий документальный фильм о банной культуре разных стран мира",
     image: posterBani,
+    slug: "bani",
   },
   {
     id: 2,
@@ -27,6 +30,7 @@ const projects: Project[] = [
     subtitle: "OKKO • ОСЕНЬ 2024",
     description: "Документальный сериал о главной ОПГ России",
     image: posterObschak,
+    slug: "obschak",
   },
   {
     id: 3,
@@ -34,6 +38,7 @@ const projects: Project[] = [
     subtitle: "OKKO • АПРЕЛЬ 2024",
     description: "Документальный сериал в формате Stand Up",
     image: posterGypsy,
+    slug: "gypsy",
   },
   {
     id: 4,
@@ -80,32 +85,50 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
     >
       {/* Image */}
       <div className={`${!isEven ? "lg:order-2" : ""}`}>
-        <div className="group relative overflow-hidden cursor-pointer">
-          <motion.div 
-            className="aspect-[16/10] overflow-hidden"
-            whileHover={{ scale: 1.02 }}
-            transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-          >
-            <motion.img
-              src={project.image}
-              alt={project.title}
-              className={`h-full w-full object-cover ${
-                project.isUpcoming ? "blur-md brightness-50" : ""
-              }`}
-              whileHover={!project.isUpcoming ? { scale: 1.08 } : {}}
-              transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
-            />
-          </motion.div>
-          
-          {/* Upcoming overlay */}
-          {project.isUpcoming && (
-            <div className="absolute inset-0 flex items-center justify-center">
-              <span className="font-display text-2xl font-light tracking-wider text-foreground/90">
-                В производстве
-              </span>
-            </div>
-          )}
-        </div>
+        {project.slug ? (
+          <Link to={`/projects/${project.slug}`} className="group relative block overflow-hidden cursor-pointer">
+            <motion.div 
+              className="aspect-[16/10] overflow-hidden"
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+            >
+              <motion.img
+                src={project.image}
+                alt={project.title}
+                className="h-full w-full object-cover"
+                whileHover={{ scale: 1.08 }}
+                transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
+              />
+            </motion.div>
+          </Link>
+        ) : (
+          <div className="group relative overflow-hidden cursor-pointer">
+            <motion.div 
+              className="aspect-[16/10] overflow-hidden"
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+            >
+              <motion.img
+                src={project.image}
+                alt={project.title}
+                className={`h-full w-full object-cover ${
+                  project.isUpcoming ? "blur-md brightness-50" : ""
+                }`}
+                whileHover={!project.isUpcoming ? { scale: 1.08 } : {}}
+                transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
+              />
+            </motion.div>
+            
+            {/* Upcoming overlay */}
+            {project.isUpcoming && (
+              <div className="absolute inset-0 flex items-center justify-center">
+                <span className="font-display text-2xl font-light tracking-wider text-foreground/90">
+                  В производстве
+                </span>
+              </div>
+            )}
+          </div>
+        )}
       </div>
 
       {/* Text Content */}
@@ -129,10 +152,16 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
           transition={{ duration: 0.6, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
           className="group mb-5 font-display text-4xl font-semibold tracking-tight text-foreground md:text-5xl lg:text-6xl xl:text-7xl"
         >
-          <span className="relative inline-block">
-            {project.title}
-            <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-foreground transition-all duration-500 group-hover:w-full" />
-          </span>
+          {project.slug ? (
+            <Link to={`/projects/${project.slug}`} className="relative inline-block">
+              {project.title}
+              <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-foreground transition-all duration-500 group-hover:w-full" />
+            </Link>
+          ) : (
+            <span className="relative inline-block">
+              {project.title}
+            </span>
+          )}
         </motion.h3>
         
         <motion.p 
