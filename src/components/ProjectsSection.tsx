@@ -15,7 +15,7 @@ interface Project {
   slug?: string;
 }
 
-const projects: Project[] = [
+const films: Project[] = [
   {
     id: 1,
     title: "Бани",
@@ -26,6 +26,25 @@ const projects: Project[] = [
   },
   {
     id: 2,
+    title: "Скоро",
+    subtitle: "ПРЕМЬЕРА 2026",
+    description: "Новый документальный фильм в производстве",
+    image: posterObschak,
+    isUpcoming: true,
+  },
+  {
+    id: 3,
+    title: "Скоро",
+    subtitle: "ПРЕМЬЕРА 2026",
+    description: "Новый документальный фильм в производстве",
+    image: posterGypsy,
+    isUpcoming: true,
+  },
+];
+
+const series: Project[] = [
+  {
+    id: 4,
     title: "Общак",
     subtitle: "OKKO • СЕНТЯБРЬ 2024",
     description: "Документальный сериал о главной ОПГ России",
@@ -33,7 +52,7 @@ const projects: Project[] = [
     slug: "obschak",
   },
   {
-    id: 3,
+    id: 5,
     title: "Быть цыганом",
     subtitle: "OKKO • АПРЕЛЬ 2024",
     description: "Документальный сериал в формате Stand Up",
@@ -41,27 +60,11 @@ const projects: Project[] = [
     slug: "gypsy",
   },
   {
-    id: 4,
-    title: "Скоро",
-    subtitle: "ПРЕМЬЕРА 2026",
-    description: "Новый документальный проект в производстве",
-    image: posterBani,
-    isUpcoming: true,
-  },
-  {
-    id: 5,
-    title: "Скоро",
-    subtitle: "ПРЕМЬЕРА 2026",
-    description: "Новый документальный проект в производстве",
-    image: posterObschak,
-    isUpcoming: true,
-  },
-  {
     id: 6,
     title: "Скоро",
     subtitle: "ПРЕМЬЕРА 2026",
-    description: "Новый документальный проект в производстве",
-    image: posterGypsy,
+    description: "Новый документальный сериал в производстве",
+    image: posterBani,
     isUpcoming: true,
   },
 ];
@@ -179,37 +182,51 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
   );
 };
 
-const ProjectsSection = () => {
-  const headerRef = useRef(null);
-  const isHeaderInView = useInView(headerRef, { once: true });
+const SectionHeader = ({ label, title }: { label: string; title: string }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
 
   return (
+    <div ref={ref} className="px-6 pb-16 pt-32 md:px-12 md:pb-24 md:pt-40 lg:px-20">
+      <div className="mx-auto max-w-7xl">
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.6 }}
+          className="mb-4 font-body text-[11px] font-medium uppercase tracking-[0.3em] text-muted-foreground"
+        >
+          {label}
+        </motion.p>
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.8, delay: 0.1 }}
+          className="font-display text-5xl font-bold tracking-tight text-foreground md:text-7xl lg:text-8xl"
+        >
+          {title}
+        </motion.h2>
+      </div>
+    </div>
+  );
+};
+
+const ProjectsSection = () => {
+  return (
     <section id="works" className="relative bg-background">
-      {/* Section Header */}
-      <div ref={headerRef} className="px-6 pb-16 pt-32 md:px-12 md:pb-24 md:pt-40 lg:px-20">
-        <div className="mx-auto max-w-7xl">
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={isHeaderInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.6 }}
-            className="mb-4 font-body text-[11px] font-medium uppercase tracking-[0.3em] text-muted-foreground"
-          >
-            Наши проекты
-          </motion.p>
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            animate={isHeaderInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="font-display text-5xl font-bold tracking-tight text-foreground md:text-7xl lg:text-8xl"
-          >
-            Наши проекты
-          </motion.h2>
-        </div>
+      {/* Films Section */}
+      <SectionHeader label="Наши проекты" title="Фильмы" />
+      <div className="space-y-24 px-6 pb-32 md:space-y-32 md:px-12 lg:space-y-40 lg:px-20 xl:space-y-48">
+        {films.map((project, index) => (
+          <div key={project.id} className="mx-auto max-w-7xl">
+            <ProjectCard project={project} index={index} />
+          </div>
+        ))}
       </div>
 
-      {/* Projects List */}
+      {/* Series Section */}
+      <SectionHeader label="Наши проекты" title="Сериалы" />
       <div className="space-y-24 px-6 pb-32 md:space-y-32 md:px-12 lg:space-y-40 lg:px-20 xl:space-y-48">
-        {projects.map((project, index) => (
+        {series.map((project, index) => (
           <div key={project.id} className="mx-auto max-w-7xl">
             <ProjectCard project={project} index={index} />
           </div>
