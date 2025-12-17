@@ -4,21 +4,22 @@ import { motion } from "framer-motion";
 import { ArrowLeft, ExternalLink, Play } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import { useLanguage } from "@/contexts/LanguageContext";
 import posterBani from "@/assets/poster-bani.jpg";
 import posterObschak from "@/assets/poster-obschak.webp";
 import posterGypsy from "@/assets/poster-gypsy.webp";
 
 interface Credit {
-  role: string;
+  roleKey: string;
   name: string;
 }
 
 interface ProjectData {
   id: string;
-  title: string;
-  subtitle: string;
-  description: string;
-  fullDescription: string;
+  titleKey: string;
+  subtitleKey: string;
+  descriptionKey: string;
+  fullDescriptionKey: string;
   poster: string;
   trailerUrl: string;
   kinopoiskUrl: string;
@@ -30,56 +31,56 @@ interface ProjectData {
 const projectsData: Record<string, ProjectData> = {
   bani: {
     id: "bani",
-    title: "Бани",
-    subtitle: "KION • 2023",
-    description: "Жаркий документальный фильм о банной культуре разных стран мира",
-    fullDescription: "Русская баня — не просто традиция или отдых: это настоящая философия и образ жизни. Трое энтузиастов из России отправляются в разные уголки земного шара, чтобы доказать, что у банной культуры нет границ. Париж, Мексика, даже пустыня в Неваде — везде, где есть люди, найдутся желающие очистить душу и тело. У каждого из героев своя цель, но все они горят своим делом и верят, что смогут привить любовь к бане другим.",
+    titleKey: "bani.title",
+    subtitleKey: "bani.subtitle",
+    descriptionKey: "bani.description",
+    fullDescriptionKey: "bani.fullDescription",
     poster: posterBani,
     trailerUrl: "https://www.youtube.com/embed/3EOCHJR3WVk",
     kinopoiskUrl: "https://www.kinopoisk.ru/film/5430490/",
     watchUrl: "https://kion.ru/video/movie/829481690",
     watchPlatform: "KION",
     credits: [
-      { role: "Режиссёр", name: "Михаил Бородин" },
-      { role: "Сценарий", name: "Роман Салахутдинов" },
-      { role: "Продюсеры", name: "Ангелина Ашман, Полина Шевченко, Ирина Минакова, Михаил Бородин" },
-      { role: "Операторы", name: "Владислав Кузнецов, Михаил Бородин, Роман Прудкин, Павел Краснов, Елена Юлина, Михаил Лошкарев, Александр Радов, Михаил Харламов" },
-      { role: "Монтаж", name: "Артур Анаян, Владислав Кузнецов" },
+      { roleKey: "credits.director", name: "Михаил Бородин" },
+      { roleKey: "credits.screenplay", name: "Роман Салахутдинов" },
+      { roleKey: "credits.producers", name: "Ангелина Ашман, Полина Шевченко, Ирина Минакова, Михаил Бородин" },
+      { roleKey: "credits.cinematographers", name: "Владислав Кузнецов, Михаил Бородин, Роман Прудкин, Павел Краснов, Елена Юлина, Михаил Лошкарев, Александр Радов, Михаил Харламов" },
+      { roleKey: "credits.editing", name: "Артур Анаян, Владислав Кузнецов" },
     ],
   },
   obschak: {
     id: "obschak",
-    title: "Общак",
-    subtitle: "OKKO • 2025",
-    description: "Документальный сериал о главной ОПГ России",
-    fullDescription: "Бывшие участники преступной группировки Общак впервые рассказывают, как образцовый советский город Комсомольск стал криминальной столицей Дальнего Востока; почему спустя 20 лет после гибели лидера Общака Евгения Васина всё ещё называют Батей; и как произошла трагедия, уничтожившая и Васина, и его империю.",
+    titleKey: "obschak.title",
+    subtitleKey: "obschak.subtitle",
+    descriptionKey: "obschak.description",
+    fullDescriptionKey: "obschak.fullDescription",
     poster: posterObschak,
     trailerUrl: "https://www.youtube.com/embed/aAdrIWSAk7c",
     kinopoiskUrl: "https://www.kinopoisk.ru/series/8123353/",
     watchUrl: "https://okkomovies.app.link/MslIJhoxJWb",
     watchPlatform: "OKKO",
     credits: [
-      { role: "Режиссёр", name: "Владислав Кузнецов" },
-      { role: "Сценарий", name: "Арина Макаренко, Игорь Залюбовин" },
-      { role: "Продюсеры", name: "Михаил Бородин, Анастасия Евтушенко, Антон Кораблёв, Владимир Тодоров, Ксения Гофман" },
-      { role: "Оператор", name: "Михаил Лошкарев" },
-      { role: "Монтаж", name: "Павел Дятлов" },
+      { roleKey: "credits.director", name: "Владислав Кузнецов" },
+      { roleKey: "credits.screenplay", name: "Арина Макаренко, Игорь Залюбовин" },
+      { roleKey: "credits.producers", name: "Михаил Бородин, Анастасия Евтушенко, Антон Кораблёв, Владимир Тодоров, Ксения Гофман" },
+      { roleKey: "credits.cinematographer", name: "Михаил Лошкарев" },
+      { roleKey: "credits.editing", name: "Павел Дятлов" },
     ],
   },
   gypsy: {
     id: "gypsy",
-    title: "Быть цыганом",
-    subtitle: "OKKO • 2024",
-    description: "Документальный сериал в формате Stand Up",
-    fullDescription: "Уникальный документальный проект, сочетающий глубокое погружение в цыганскую культуру с элементами стендап-комедии. Честный и откровенный взгляд изнутри на жизнь одного из самых загадочных народов.",
+    titleKey: "gypsy.title",
+    subtitleKey: "gypsy.subtitle",
+    descriptionKey: "gypsy.description",
+    fullDescriptionKey: "gypsy.fullDescription",
     poster: posterGypsy,
     trailerUrl: "https://www.youtube.com/embed/LbuLHzZFQKw",
     kinopoiskUrl: "https://www.kinopoisk.ru/series/7577709/",
     watchUrl: "https://okkomovies.app.link/3tR88OB72Ub",
     watchPlatform: "OKKO",
     credits: [
-      { role: "Режиссёр", name: "—" },
-      { role: "Продюсер", name: "—" },
+      { roleKey: "credits.director", name: "—" },
+      { roleKey: "credits.producer", name: "—" },
     ],
   },
 };
@@ -87,6 +88,7 @@ const projectsData: Record<string, ProjectData> = {
 const ProjectDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const project = slug ? projectsData[slug] : null;
+  const { t } = useLanguage();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -96,9 +98,9 @@ const ProjectDetail = () => {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
-          <h1 className="font-display text-4xl text-foreground mb-4">Проект не найден</h1>
+          <h1 className="font-display text-4xl text-foreground mb-4">{t("projects.notFound")}</h1>
           <Link to="/#works" className="text-muted-foreground hover:text-foreground transition-colors">
-            Вернуться к проектам
+            {t("projects.backToProjects")}
           </Link>
         </div>
       </div>
@@ -117,7 +119,7 @@ const ProjectDetail = () => {
             className="inline-flex items-center gap-2 font-body text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
-            Проекты
+            {t("projects.back")}
           </Link>
         </div>
       </div>
@@ -133,7 +135,7 @@ const ProjectDetail = () => {
           <div className="aspect-video overflow-hidden bg-black">
             <iframe
               src={project.trailerUrl}
-              title={`${project.title} - Трейлер`}
+              title={`${t(project.titleKey)} - ${t("projects.trailer")}`}
               className="w-full h-full"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
@@ -149,7 +151,7 @@ const ProjectDetail = () => {
               className="inline-flex items-center gap-2 px-6 py-3 bg-foreground text-background font-body text-sm font-medium uppercase tracking-wider hover:bg-foreground/90 transition-colors"
             >
               <Play className="w-4 h-4" />
-              Смотреть на {project.watchPlatform}
+              {t("projects.watchOn")} {project.watchPlatform}
             </a>
             <a
               href={project.kinopoiskUrl}
@@ -158,7 +160,7 @@ const ProjectDetail = () => {
               className="inline-flex items-center gap-2 px-6 py-3 border border-foreground/20 text-foreground font-body text-sm font-medium uppercase tracking-wider hover:bg-foreground/10 transition-colors"
             >
               <ExternalLink className="w-4 h-4" />
-              Страница на Кинопоиске
+              {t("projects.kinopoisk")}
             </a>
           </div>
         </div>
@@ -173,7 +175,7 @@ const ProjectDetail = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="mb-4 font-body text-[11px] font-medium uppercase tracking-[0.3em] text-muted-foreground"
           >
-            {project.subtitle}
+            {t(project.subtitleKey)}
           </motion.p>
           
           <motion.h1
@@ -182,7 +184,7 @@ const ProjectDetail = () => {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="font-display text-5xl font-bold tracking-tight text-foreground md:text-6xl lg:text-7xl mb-8"
           >
-            {project.title}
+            {t(project.titleKey)}
           </motion.h1>
           
           <motion.p
@@ -191,7 +193,7 @@ const ProjectDetail = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="font-body text-lg leading-relaxed text-muted-foreground md:text-xl max-w-3xl"
           >
-            {project.fullDescription}
+            {t(project.fullDescriptionKey)}
           </motion.p>
         </div>
       </div>
@@ -209,7 +211,7 @@ const ProjectDetail = () => {
               <div className="aspect-[2/3] overflow-hidden">
                 <img
                   src={project.poster}
-                  alt={project.title}
+                  alt={t(project.titleKey)}
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -225,14 +227,14 @@ const ProjectDetail = () => {
               <div className="space-y-5">
                 {project.credits.map((credit, index) => (
                   <motion.div
-                    key={credit.role}
+                    key={credit.roleKey}
                     initial={{ opacity: 0, y: 15 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.7 + index * 0.1 }}
                     className="grid grid-cols-[1fr_1fr] gap-6"
                   >
                     <p className="font-body text-sm uppercase tracking-wider text-foreground text-right">
-                      {credit.role}
+                      {t(credit.roleKey)}
                     </p>
                     <div className="font-body text-sm uppercase tracking-wider text-foreground text-left">
                       {credit.name.split(', ').map((name, i) => (

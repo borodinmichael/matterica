@@ -28,19 +28,37 @@ const translations = {
     "projects.upcoming": "Скоро",
     "projects.upcomingFilm": "Новый документальный фильм в производстве",
     "projects.upcomingSeries": "Новый документальный сериал в производстве",
+    "projects.back": "Проекты",
+    "projects.notFound": "Проект не найден",
+    "projects.backToProjects": "Вернуться к проектам",
+    "projects.watchOn": "Смотреть на",
+    "projects.kinopoisk": "Страница на Кинопоиске",
+    "projects.trailer": "Трейлер",
     
     // Project details
     "bani.title": "Бани",
-    "bani.subtitle": "KION • ДЕКАБРЬ 2023",
+    "bani.subtitle": "KION • 2023",
     "bani.description": "Жаркий документальный фильм о банной культуре разных стран мира",
+    "bani.fullDescription": "Русская баня — не просто традиция или отдых: это настоящая философия и образ жизни. Трое энтузиастов из России отправляются в разные уголки земного шара, чтобы доказать, что у банной культуры нет границ. Париж, Мексика, даже пустыня в Неваде — везде, где есть люди, найдутся желающие очистить душу и тело. У каждого из героев своя цель, но все они горят своим делом и верят, что смогут привить любовь к бане другим.",
     
     "obschak.title": "Общак",
-    "obschak.subtitle": "OKKO • СЕНТЯБРЬ 2024",
+    "obschak.subtitle": "OKKO • 2025",
     "obschak.description": "Документальный сериал о главной ОПГ России",
+    "obschak.fullDescription": "Бывшие участники преступной группировки Общак впервые рассказывают, как образцовый советский город Комсомольск стал криминальной столицей Дальнего Востока; почему спустя 20 лет после гибели лидера Общака Евгения Васина всё ещё называют Батей; и как произошла трагедия, уничтожившая и Васина, и его империю.",
     
     "gypsy.title": "Быть цыганом",
-    "gypsy.subtitle": "OKKO • АПРЕЛЬ 2024",
+    "gypsy.subtitle": "OKKO • 2024",
     "gypsy.description": "Документальный сериал в формате Stand Up",
+    "gypsy.fullDescription": "Уникальный документальный проект, сочетающий глубокое погружение в цыганскую культуру с элементами стендап-комедии. Честный и откровенный взгляд изнутри на жизнь одного из самых загадочных народов.",
+    
+    // Credits roles
+    "credits.director": "Режиссёр",
+    "credits.screenplay": "Сценарий",
+    "credits.producers": "Продюсеры",
+    "credits.cinematographers": "Операторы",
+    "credits.editing": "Монтаж",
+    "credits.cinematographer": "Оператор",
+    "credits.producer": "Продюсер",
     
     // About
     "about.label": "О студии",
@@ -74,19 +92,37 @@ const translations = {
     "projects.upcoming": "Coming soon",
     "projects.upcomingFilm": "New documentary film in production",
     "projects.upcomingSeries": "New documentary series in production",
+    "projects.back": "Projects",
+    "projects.notFound": "Project not found",
+    "projects.backToProjects": "Back to projects",
+    "projects.watchOn": "Watch on",
+    "projects.kinopoisk": "Kinopoisk page",
+    "projects.trailer": "Trailer",
     
     // Project details
     "bani.title": "Baths",
-    "bani.subtitle": "KION • DECEMBER 2023",
+    "bani.subtitle": "KION • 2023",
     "bani.description": "A steamy documentary about bath culture around the world",
+    "bani.fullDescription": "Russian banya is not just a tradition or relaxation: it's a true philosophy and way of life. Three enthusiasts from Russia travel to different corners of the globe to prove that bath culture knows no borders. Paris, Mexico, even the Nevada desert — wherever there are people, there are those who want to cleanse their body and soul. Each hero has their own goal, but they all burn with passion for their craft and believe they can instill a love of banya in others.",
     
     "obschak.title": "Obschak",
-    "obschak.subtitle": "OKKO • SEPTEMBER 2024",
+    "obschak.subtitle": "OKKO • 2025",
     "obschak.description": "Documentary series about Russia's main organized crime group",
+    "obschak.fullDescription": "Former members of the Obschak criminal group tell for the first time how the model Soviet city of Komsomolsk became the criminal capital of the Far East; why 20 years after the death of Obschak leader Evgeny Vasin he is still called Batya; and how the tragedy that destroyed both Vasin and his empire occurred.",
     
     "gypsy.title": "Being Gypsy",
-    "gypsy.subtitle": "OKKO • APRIL 2024",
+    "gypsy.subtitle": "OKKO • 2024",
     "gypsy.description": "Documentary series in Stand Up format",
+    "gypsy.fullDescription": "A unique documentary project combining deep immersion into Romani culture with elements of stand-up comedy. An honest and candid look from the inside at the life of one of the most mysterious peoples.",
+    
+    // Credits roles
+    "credits.director": "Director",
+    "credits.screenplay": "Screenplay",
+    "credits.producers": "Producers",
+    "credits.cinematographers": "Cinematographers",
+    "credits.editing": "Editing",
+    "credits.cinematographer": "Cinematographer",
+    "credits.producer": "Producer",
     
     // About
     "about.label": "About studio",
