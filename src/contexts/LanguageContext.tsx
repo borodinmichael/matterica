@@ -82,8 +82,8 @@ const translations = {
     
     // About
     "about.label": "О студии",
-    "about.title1": "Мы создаём",
-    "about.title2": "визуальные истории",
+    "about.title1": "Мы рассказываем",
+    "about.title2": "истории",
     "about.text1": "Mattérica — это кинопродакшн, который занимается производством документальных фильмов и сериалов для онлайн-кинотеатров. Мы любим рассказывать истории про людей и для людей.",
     "about.text2": "Наша команда объединяет режиссёров, операторов, аниматоров и продюсеров, которые превращают идеи в мощные визуальные высказывания и интересный зрительский опыт.",
     
@@ -166,8 +166,8 @@ const translations = {
     
     // About
     "about.label": "About studio",
-    "about.title1": "We create",
-    "about.title2": "visual stories",
+    "about.title1": "We tell",
+    "about.title2": "stories",
     "about.text1": "Mattérica is a film production company that creates documentary films and series for streaming platforms. We love telling stories about people and for people.",
     "about.text2": "Our team brings together directors, cinematographers, animators and producers who transform ideas into powerful visual statements and engaging viewer experiences.",
     
