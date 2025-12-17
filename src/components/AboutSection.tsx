@@ -17,6 +17,16 @@ import backstage7 from "@/assets/backstage/backstage-7.jpg";
 import backstage8 from "@/assets/backstage/backstage-8.jpg";
 import backstage9 from "@/assets/backstage/backstage-9.jpg";
 import backstage10 from "@/assets/backstage/backstage-10.jpg";
+import backstage11 from "@/assets/backstage/backstage-11.jpg";
+import backstage12 from "@/assets/backstage/backstage-12.jpg";
+import backstage13 from "@/assets/backstage/backstage-13.jpg";
+import backstage14 from "@/assets/backstage/backstage-14.jpg";
+import backstage15 from "@/assets/backstage/backstage-15.jpg";
+import backstage16 from "@/assets/backstage/backstage-16.jpg";
+import backstage17 from "@/assets/backstage/backstage-17.jpg";
+import backstage18 from "@/assets/backstage/backstage-18.jpg";
+import backstage19 from "@/assets/backstage/backstage-19.jpg";
+import backstage20 from "@/assets/backstage/backstage-20.jpg";
 
 const backstageImages = [
   backstage1,
@@ -29,6 +39,16 @@ const backstageImages = [
   backstage8,
   backstage9,
   backstage10,
+  backstage11,
+  backstage12,
+  backstage13,
+  backstage14,
+  backstage15,
+  backstage16,
+  backstage17,
+  backstage18,
+  backstage19,
+  backstage20,
 ];
 
 const AboutSection = () => {
