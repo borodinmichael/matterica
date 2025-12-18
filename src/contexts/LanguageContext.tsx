@@ -16,7 +16,7 @@ const translations = {
     "nav.contacts": "Контакты",
     
     // Hero
-    "hero.tagline": "Documentary film studio",
+    "hero.tagline": "Film studio",
     "hero.scroll": "Scroll",
     
     // Projects
@@ -100,7 +100,7 @@ const translations = {
     "nav.contacts": "Contact",
     
     // Hero
-    "hero.tagline": "Documentary film studio",
+    "hero.tagline": "Film studio",
     "hero.scroll": "Scroll",
     
     // Projects
