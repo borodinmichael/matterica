@@ -49,7 +49,7 @@ const translations = {
     "obschak.fullDescription": "Бывшие участники преступной группировки Общак впервые рассказывают, как образцовый советский город Комсомольск стал криминальной столицей Дальнего Востока; почему спустя 20 лет после гибели лидера Общака Евгения Васина всё ещё называют Батей; и как произошла трагедия, уничтожившая и Васина, и его империю.",
     
     "gypsy.title": "Быть цыганом",
-    "gypsy.subtitle": "OKKO • 2024",
+    "gypsy.subtitle": "OKKO • 2025",
     "gypsy.description": "Документальный сериал в формате Stand Up",
     "gypsy.fullDescription": "Уникальный документальный проект, сочетающий глубокое погружение в цыганскую культуру с элементами стендап-комедии. Честный и откровенный взгляд изнутри на жизнь одного из самых загадочных народов.",
     
@@ -136,7 +136,7 @@ const translations = {
     "obschak.fullDescription": "Former members of the Obschak criminal group tell for the first time how the model Soviet city of Komsomolsk became the criminal capital of the Far East; why 20 years after the death of Obschak leader Evgeny Vasin he is still called Batya; and how the tragedy that destroyed both Vasin and his empire occurred.",
     
     "gypsy.title": "Being Gypsy",
-    "gypsy.subtitle": "OKKO • 2024",
+    "gypsy.subtitle": "OKKO • 2025",
     "gypsy.description": "Documentary series in Stand Up format",
     "gypsy.fullDescription": "A unique documentary project combining deep immersion into Romani culture with elements of stand-up comedy. An honest and candid look from the inside at the life of one of the most mysterious peoples.",
     
