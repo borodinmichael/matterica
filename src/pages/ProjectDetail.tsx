@@ -84,7 +84,10 @@ const projectsData: Record<string, ProjectData> = {
     rating: 7.3,
     credits: [
       { roleKey: "credits.director", nameKey: "credits.gypsy.director" },
-      { roleKey: "credits.producer", nameKey: "credits.gypsy.producer" },
+      { roleKey: "credits.screenplay", nameKey: "credits.gypsy.screenplay" },
+      { roleKey: "credits.producers", nameKey: "credits.gypsy.producers" },
+      { roleKey: "credits.cinematographer", nameKey: "credits.gypsy.cinematographer" },
+      { roleKey: "credits.editing", nameKey: "credits.gypsy.editing" },
     ],
   },
 };
