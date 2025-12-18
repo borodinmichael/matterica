@@ -77,8 +77,11 @@ const translations = {
     "credits.obschak.editing": "Павел Дятлов",
     
     // Credits names - Gypsy
-    "credits.gypsy.director": "—",
-    "credits.gypsy.producer": "—",
+    "credits.gypsy.director": "Владислав Кузнецов",
+    "credits.gypsy.screenplay": "Алексей Кобылков",
+    "credits.gypsy.producers": "Михаил Бородин, Анастасия Евтушенко, Антон Кораблёв, Владимир Тодоров, Ксения Гофман",
+    "credits.gypsy.cinematographer": "Михаил Лошкарев",
+    "credits.gypsy.editing": "Андрей Янес",
     
     // About
     "about.label": "О студии",
@@ -161,8 +164,11 @@ const translations = {
     "credits.obschak.editing": "Pavel Dyatlov",
     
     // Credits names - Gypsy
-    "credits.gypsy.director": "—",
-    "credits.gypsy.producer": "—",
+    "credits.gypsy.director": "Vladislav Kuznetsov",
+    "credits.gypsy.screenplay": "Alexey Kobylkov",
+    "credits.gypsy.producers": "Mikhail Borodin, Anastasia Evtushenko, Anton Korablyov, Vladimir Todorov, Ksenia Gofman",
+    "credits.gypsy.cinematographer": "Mikhail Loshkarev",
+    "credits.gypsy.editing": "Andrey Yanes",
     
     // About
     "about.label": "About studio",
