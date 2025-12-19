@@ -13,11 +13,11 @@ const LoadingAnimation = ({ onComplete }: LoadingAnimationProps) => {
     const video = videoRef.current;
     if (!video) return;
 
-    // Start at 1 second
-    video.currentTime = 1;
+    const handleLoadedMetadata = () => {
+      video.currentTime = 1;
+    };
 
     const handleTimeUpdate = () => {
-      // Stop at 6 seconds
       if (video.currentTime >= 6) {
         video.pause();
         setIsEnding(true);
@@ -25,8 +25,18 @@ const LoadingAnimation = ({ onComplete }: LoadingAnimationProps) => {
       }
     };
 
+    video.addEventListener("loadedmetadata", handleLoadedMetadata);
     video.addEventListener("timeupdate", handleTimeUpdate);
-    return () => video.removeEventListener("timeupdate", handleTimeUpdate);
+    
+    // In case metadata already loaded
+    if (video.readyState >= 1) {
+      video.currentTime = 1;
+    }
+
+    return () => {
+      video.removeEventListener("loadedmetadata", handleLoadedMetadata);
+      video.removeEventListener("timeupdate", handleTimeUpdate);
+    };
   }, [onComplete]);
 
   return (
