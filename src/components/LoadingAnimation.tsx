@@ -7,6 +7,7 @@ interface LoadingAnimationProps {
 
 const LoadingAnimation = ({ onComplete }: LoadingAnimationProps) => {
   const [isEnding, setIsEnding] = useState(false);
+  const [isBuffering, setIsBuffering] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
   const hasStarted = useRef(false);
 
@@ -17,6 +18,7 @@ const LoadingAnimation = ({ onComplete }: LoadingAnimationProps) => {
     const startVideo = () => {
       if (hasStarted.current) return;
       hasStarted.current = true;
+      setIsBuffering(false);
       
       const playPromise = video.play();
       if (playPromise !== undefined) {
@@ -67,13 +69,26 @@ const LoadingAnimation = ({ onComplete }: LoadingAnimationProps) => {
         isEnding ? "opacity-0 pointer-events-none" : "opacity-100"
       }`}
     >
+      {/* Loading indicator */}
+      {isBuffering && (
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="flex gap-1">
+            <span className="w-2 h-2 bg-primary rounded-full animate-pulse" style={{ animationDelay: "0ms" }} />
+            <span className="w-2 h-2 bg-primary rounded-full animate-pulse" style={{ animationDelay: "150ms" }} />
+            <span className="w-2 h-2 bg-primary rounded-full animate-pulse" style={{ animationDelay: "300ms" }} />
+          </div>
+        </div>
+      )}
+      
       <video
         ref={videoRef}
         src={logoVideo}
         muted
         playsInline
         preload="auto"
-        className="w-full h-full object-contain md:object-cover"
+        className={`w-full h-full object-contain md:object-cover transition-opacity duration-300 ${
+          isBuffering ? "opacity-0" : "opacity-100"
+        }`}
       />
     </div>
   );
