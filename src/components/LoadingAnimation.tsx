@@ -8,6 +8,7 @@ interface LoadingAnimationProps {
 const LoadingAnimation = ({ onComplete }: LoadingAnimationProps) => {
   const [isEnding, setIsEnding] = useState(false);
   const [isBuffering, setIsBuffering] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const hasStarted = useRef(false);
 
@@ -15,19 +16,31 @@ const LoadingAnimation = ({ onComplete }: LoadingAnimationProps) => {
     const video = videoRef.current;
     if (!video) return;
 
-    const startVideo = () => {
+    // Safari fix: set attributes directly
+    video.setAttribute('playsinline', '');
+    video.setAttribute('webkit-playsinline', '');
+    video.muted = true;
+
+    const attemptPlay = async () => {
       if (hasStarted.current) return;
-      hasStarted.current = true;
-      setIsBuffering(false);
       
-      const playPromise = video.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(() => {
-          // Autoplay blocked - skip animation
-          setIsEnding(true);
-          setTimeout(onComplete, 100);
-        });
+      try {
+        // Safari needs a small delay after load
+        await new Promise(resolve => setTimeout(resolve, 100));
+        await video.play();
+        hasStarted.current = true;
+        setIsBuffering(false);
+        setIsPlaying(true);
+      } catch (error) {
+        console.log('Autoplay failed, skipping animation');
+        hasStarted.current = true;
+        setIsEnding(true);
+        setTimeout(onComplete, 100);
       }
+    };
+
+    const handleCanPlayThrough = () => {
+      attemptPlay();
     };
 
     const handleTimeUpdate = () => {
@@ -38,28 +51,36 @@ const LoadingAnimation = ({ onComplete }: LoadingAnimationProps) => {
       }
     };
 
-    video.addEventListener("loadeddata", startVideo);
-    video.addEventListener("canplay", startVideo);
+    const handlePlaying = () => {
+      setIsBuffering(false);
+      setIsPlaying(true);
+    };
+
+    video.addEventListener("canplaythrough", handleCanPlayThrough);
     video.addEventListener("timeupdate", handleTimeUpdate);
+    video.addEventListener("playing", handlePlaying);
 
-    // Try to start if already ready
-    if (video.readyState >= 2) {
-      startVideo();
-    }
+    // Also try on loadeddata for faster start
+    video.addEventListener("loadeddata", () => {
+      if (video.readyState >= 3) {
+        attemptPlay();
+      }
+    });
 
-    // Fallback timeout - if video doesn't start in 3 seconds, skip
+    // Fallback timeout
     const fallbackTimeout = setTimeout(() => {
       if (!hasStarted.current) {
+        console.log('Timeout reached, skipping animation');
         setIsEnding(true);
         setTimeout(onComplete, 100);
       }
-    }, 3000);
+    }, 4000);
 
     return () => {
       clearTimeout(fallbackTimeout);
-      video.removeEventListener("loadeddata", startVideo);
-      video.removeEventListener("canplay", startVideo);
+      video.removeEventListener("canplaythrough", handleCanPlayThrough);
       video.removeEventListener("timeupdate", handleTimeUpdate);
+      video.removeEventListener("playing", handlePlaying);
     };
   }, [onComplete]);
 
@@ -70,7 +91,7 @@ const LoadingAnimation = ({ onComplete }: LoadingAnimationProps) => {
       }`}
     >
       {/* Loading indicator */}
-      {isBuffering && (
+      {isBuffering && !isPlaying && (
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="flex gap-1">
             <span className="w-2 h-2 bg-primary rounded-full animate-pulse" style={{ animationDelay: "0ms" }} />
@@ -87,7 +108,7 @@ const LoadingAnimation = ({ onComplete }: LoadingAnimationProps) => {
         playsInline
         preload="auto"
         className={`w-full h-full object-contain md:object-cover transition-opacity duration-300 ${
-          isBuffering ? "opacity-0" : "opacity-100"
+          isPlaying ? "opacity-100" : "opacity-0"
         }`}
       />
     </div>
