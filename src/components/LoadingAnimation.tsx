@@ -18,7 +18,7 @@ const LoadingAnimation = ({ onComplete }: LoadingAnimationProps) => {
     };
 
     const handleTimeUpdate = () => {
-      if (video.currentTime >= 6) {
+      if (video.currentTime >= 5) {
         video.pause();
         setIsEnding(true);
         setTimeout(onComplete, 800);
