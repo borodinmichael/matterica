@@ -14,29 +14,24 @@ const LoadingAnimation = ({ onComplete }: LoadingAnimationProps) => {
     if (!video) return;
 
     const handleLoadedData = () => {
-      video.currentTime = 1;
       video.play().catch(console.error);
     };
 
-    const handleTimeUpdate = () => {
-      if (video.currentTime >= 6) {
-        video.pause();
-        setIsEnding(true);
-        setTimeout(onComplete, 800);
-      }
+    const handleEnded = () => {
+      setIsEnding(true);
+      setTimeout(onComplete, 800);
     };
 
     video.addEventListener("loadeddata", handleLoadedData);
-    video.addEventListener("timeupdate", handleTimeUpdate);
+    video.addEventListener("ended", handleEnded);
 
     if (video.readyState >= 2) {
-      video.currentTime = 1;
       video.play().catch(console.error);
     }
 
     return () => {
       video.removeEventListener("loadeddata", handleLoadedData);
-      video.removeEventListener("timeupdate", handleTimeUpdate);
+      video.removeEventListener("ended", handleEnded);
     };
   }, [onComplete]);
 
