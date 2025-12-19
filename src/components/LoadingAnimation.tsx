@@ -7,14 +7,20 @@ interface LoadingAnimationProps {
 
 const LoadingAnimation = ({ onComplete }: LoadingAnimationProps) => {
   const [isEnding, setIsEnding] = useState(false);
+  const [isReady, setIsReady] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
-    const handleLoadedMetadata = () => {
+    const handleCanPlay = () => {
       video.currentTime = 1;
+    };
+
+    const handleSeeked = () => {
+      setIsReady(true);
+      video.play().catch(console.error);
     };
 
     const handleTimeUpdate = () => {
@@ -25,16 +31,18 @@ const LoadingAnimation = ({ onComplete }: LoadingAnimationProps) => {
       }
     };
 
-    video.addEventListener("loadedmetadata", handleLoadedMetadata);
+    video.addEventListener("canplaythrough", handleCanPlay);
+    video.addEventListener("seeked", handleSeeked);
     video.addEventListener("timeupdate", handleTimeUpdate);
-    
-    // In case metadata already loaded
-    if (video.readyState >= 1) {
+
+    // If already loaded
+    if (video.readyState >= 4) {
       video.currentTime = 1;
     }
 
     return () => {
-      video.removeEventListener("loadedmetadata", handleLoadedMetadata);
+      video.removeEventListener("canplaythrough", handleCanPlay);
+      video.removeEventListener("seeked", handleSeeked);
       video.removeEventListener("timeupdate", handleTimeUpdate);
     };
   }, [onComplete]);
@@ -48,10 +56,12 @@ const LoadingAnimation = ({ onComplete }: LoadingAnimationProps) => {
       <video
         ref={videoRef}
         src={logoVideo}
-        autoPlay
         muted
         playsInline
-        className="w-full h-full object-contain md:object-cover"
+        preload="auto"
+        className={`w-full h-full object-contain md:object-cover transition-opacity duration-300 ${
+          isReady ? "opacity-100" : "opacity-0"
+        }`}
       />
     </div>
   );
