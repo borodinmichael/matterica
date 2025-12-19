@@ -13,13 +13,20 @@ const LoadingAnimation = ({ onComplete }: LoadingAnimationProps) => {
     const video = videoRef.current;
     if (!video) return;
 
-    const handleEnded = () => {
-      setIsEnding(true);
-      setTimeout(onComplete, 800);
+    // Start at 1 second
+    video.currentTime = 1;
+
+    const handleTimeUpdate = () => {
+      // Stop at 6 seconds
+      if (video.currentTime >= 6) {
+        video.pause();
+        setIsEnding(true);
+        setTimeout(onComplete, 800);
+      }
     };
 
-    video.addEventListener("ended", handleEnded);
-    return () => video.removeEventListener("ended", handleEnded);
+    video.addEventListener("timeupdate", handleTimeUpdate);
+    return () => video.removeEventListener("timeupdate", handleTimeUpdate);
   }, [onComplete]);
 
   return (
