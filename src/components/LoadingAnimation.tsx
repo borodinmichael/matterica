@@ -17,13 +17,16 @@ const LoadingAnimation = ({ onComplete }: LoadingAnimationProps) => {
       video.play().catch(console.error);
     };
 
-    const handleEnded = () => {
-      setIsEnding(true);
-      setTimeout(onComplete, 800);
+    const handleTimeUpdate = () => {
+      if (video.currentTime >= 6) {
+        video.pause();
+        setIsEnding(true);
+        setTimeout(onComplete, 800);
+      }
     };
 
     video.addEventListener("loadeddata", handleLoadedData);
-    video.addEventListener("ended", handleEnded);
+    video.addEventListener("timeupdate", handleTimeUpdate);
 
     if (video.readyState >= 2) {
       video.play().catch(console.error);
@@ -31,7 +34,7 @@ const LoadingAnimation = ({ onComplete }: LoadingAnimationProps) => {
 
     return () => {
       video.removeEventListener("loadeddata", handleLoadedData);
-      video.removeEventListener("ended", handleEnded);
+      video.removeEventListener("timeupdate", handleTimeUpdate);
     };
   }, [onComplete]);
 
