@@ -8,13 +8,24 @@ interface LoadingAnimationProps {
 const LoadingAnimation = ({ onComplete }: LoadingAnimationProps) => {
   const [isEnding, setIsEnding] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const hasStarted = useRef(false);
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
-    const handleLoadedData = () => {
-      video.play().catch(console.error);
+    const startVideo = () => {
+      if (hasStarted.current) return;
+      hasStarted.current = true;
+      
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          // Autoplay blocked - skip animation
+          setIsEnding(true);
+          setTimeout(onComplete, 100);
+        });
+      }
     };
 
     const handleTimeUpdate = () => {
@@ -25,15 +36,27 @@ const LoadingAnimation = ({ onComplete }: LoadingAnimationProps) => {
       }
     };
 
-    video.addEventListener("loadeddata", handleLoadedData);
+    video.addEventListener("loadeddata", startVideo);
+    video.addEventListener("canplay", startVideo);
     video.addEventListener("timeupdate", handleTimeUpdate);
 
+    // Try to start if already ready
     if (video.readyState >= 2) {
-      video.play().catch(console.error);
+      startVideo();
     }
 
+    // Fallback timeout - if video doesn't start in 3 seconds, skip
+    const fallbackTimeout = setTimeout(() => {
+      if (!hasStarted.current) {
+        setIsEnding(true);
+        setTimeout(onComplete, 100);
+      }
+    }, 3000);
+
     return () => {
-      video.removeEventListener("loadeddata", handleLoadedData);
+      clearTimeout(fallbackTimeout);
+      video.removeEventListener("loadeddata", startVideo);
+      video.removeEventListener("canplay", startVideo);
       video.removeEventListener("timeupdate", handleTimeUpdate);
     };
   }, [onComplete]);
