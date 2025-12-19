@@ -7,19 +7,14 @@ interface LoadingAnimationProps {
 
 const LoadingAnimation = ({ onComplete }: LoadingAnimationProps) => {
   const [isEnding, setIsEnding] = useState(false);
-  const [isReady, setIsReady] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
-    const handleCanPlay = () => {
+    const handleLoadedData = () => {
       video.currentTime = 1;
-    };
-
-    const handleSeeked = () => {
-      setIsReady(true);
       video.play().catch(console.error);
     };
 
@@ -31,18 +26,16 @@ const LoadingAnimation = ({ onComplete }: LoadingAnimationProps) => {
       }
     };
 
-    video.addEventListener("canplaythrough", handleCanPlay);
-    video.addEventListener("seeked", handleSeeked);
+    video.addEventListener("loadeddata", handleLoadedData);
     video.addEventListener("timeupdate", handleTimeUpdate);
 
-    // If already loaded
-    if (video.readyState >= 4) {
+    if (video.readyState >= 2) {
       video.currentTime = 1;
+      video.play().catch(console.error);
     }
 
     return () => {
-      video.removeEventListener("canplaythrough", handleCanPlay);
-      video.removeEventListener("seeked", handleSeeked);
+      video.removeEventListener("loadeddata", handleLoadedData);
       video.removeEventListener("timeupdate", handleTimeUpdate);
     };
   }, [onComplete]);
@@ -59,9 +52,7 @@ const LoadingAnimation = ({ onComplete }: LoadingAnimationProps) => {
         muted
         playsInline
         preload="auto"
-        className={`w-full h-full object-contain md:object-cover transition-opacity duration-300 ${
-          isReady ? "opacity-100" : "opacity-0"
-        }`}
+        className="w-full h-full object-contain md:object-cover"
       />
     </div>
   );
