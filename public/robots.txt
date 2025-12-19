@@ -16,4 +16,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://matterica.ru/sitemap.xml
+Sitemap: https://matterica.film/sitemap.xml
