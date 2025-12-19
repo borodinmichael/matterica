@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowLeft, ExternalLink, Play, Star } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import SEOHead from "@/components/SEOHead";
 import { useLanguage } from "@/contexts/LanguageContext";
 import posterBani from "@/assets/poster-bani.png";
 import posterObschak from "@/assets/poster-obschak.png";
@@ -12,6 +13,13 @@ import posterGypsy from "@/assets/poster-gypsy.png";
 interface Credit {
   roleKey: string;
   nameKey: string;
+}
+
+interface ProjectSEO {
+  title: string;
+  description: string;
+  keywords: string;
+  jsonLd: object;
 }
 
 interface ProjectData {
@@ -27,6 +35,7 @@ interface ProjectData {
   watchPlatform: string;
   rating: number;
   credits: Credit[];
+  seo: ProjectSEO;
 }
 
 const projectsData: Record<string, ProjectData> = {
@@ -49,6 +58,41 @@ const projectsData: Record<string, ProjectData> = {
       { roleKey: "credits.cinematographers", nameKey: "credits.bani.cinematographers" },
       { roleKey: "credits.editing", nameKey: "credits.bani.editing" },
     ],
+    seo: {
+      title: "Бани — Документальный фильм | Matterica Film Studio",
+      description: "Документальный фильм «Бани» о русской банной культуре. Режиссер Михаил Бородин. Смотреть на KION. Производство студии Matterica.",
+      keywords: "Бани фильм, документальный фильм Бани, русская баня фильм, Михаил Бородин режиссер, Matterica, документальное кино, KION",
+      jsonLd: {
+        "@context": "https://schema.org",
+        "@type": "Movie",
+        "name": "Бани",
+        "alternateName": "Bani",
+        "url": "https://matterica.film/project/bani",
+        "image": "https://matterica.film/og-image.png",
+        "description": "Документальный фильм о русской банной культуре",
+        "genre": "Документальный",
+        "dateCreated": "2024",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "8.4",
+          "bestRating": "10",
+          "ratingCount": "1000"
+        },
+        "director": {
+          "@type": "Person",
+          "name": "Михаил Бородин"
+        },
+        "producer": {
+          "@type": "Person",
+          "name": "Михаил Бородин"
+        },
+        "productionCompany": {
+          "@type": "Organization",
+          "name": "Matterica",
+          "url": "https://matterica.film"
+        }
+      }
+    }
   },
   obschak: {
     id: "obschak",
@@ -69,6 +113,33 @@ const projectsData: Record<string, ProjectData> = {
       { roleKey: "credits.cinematographer", nameKey: "credits.obschak.cinematographer" },
       { roleKey: "credits.editing", nameKey: "credits.obschak.editing" },
     ],
+    seo: {
+      title: "Общак — Документальный сериал | Matterica Film Studio",
+      description: "Документальный сериал «Общак». Смотреть на OKKO. Производство студии Matterica. Продюсер Михаил Бородин.",
+      keywords: "Общак фильм, Общак сериал, документальный сериал Общак, Matterica, OKKO, документальное кино, Михаил Бородин продюсер",
+      jsonLd: {
+        "@context": "https://schema.org",
+        "@type": "TVSeries",
+        "name": "Общак",
+        "alternateName": "Obschak",
+        "url": "https://matterica.film/project/obschak",
+        "image": "https://matterica.film/og-image.png",
+        "description": "Документальный сериал",
+        "genre": "Документальный",
+        "dateCreated": "2024",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "6.7",
+          "bestRating": "10",
+          "ratingCount": "500"
+        },
+        "productionCompany": {
+          "@type": "Organization",
+          "name": "Matterica",
+          "url": "https://matterica.film"
+        }
+      }
+    }
   },
   gypsy: {
     id: "gypsy",
@@ -89,11 +160,63 @@ const projectsData: Record<string, ProjectData> = {
       { roleKey: "credits.cinematographer", nameKey: "credits.gypsy.cinematographer" },
       { roleKey: "credits.editing", nameKey: "credits.gypsy.editing" },
     ],
+    seo: {
+      title: "Быть цыганом — Документальный сериал | Режиссер Владислав Кузнецов | Matterica",
+      description: "Документальный сериал «Быть цыганом» о цыганской культуре. Режиссер Владислав Кузнецов, продюсер Михаил Бородин. Смотреть на OKKO. Студия Matterica.",
+      keywords: "Быть цыганом фильм, Цыгане фильм, документальный сериал цыгане, Владислав Кузнецов режиссер, Михаил Бородин продюсер, Matterica, OKKO, цыганская культура",
+      jsonLd: {
+        "@context": "https://schema.org",
+        "@type": "TVSeries",
+        "name": "Быть цыганом",
+        "alternateName": ["Gypsy", "Цыгане фильм"],
+        "url": "https://matterica.film/project/gypsy",
+        "image": "https://matterica.film/og-image.png",
+        "description": "Документальный сериал о цыганской культуре",
+        "genre": "Документальный",
+        "dateCreated": "2025",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "7.3",
+          "bestRating": "10",
+          "ratingCount": "800"
+        },
+        "director": {
+          "@type": "Person",
+          "name": "Владислав Кузнецов"
+        },
+        "producer": [
+          {
+            "@type": "Person",
+            "name": "Михаил Бородин"
+          },
+          {
+            "@type": "Person",
+            "name": "Анастасия Евтушенко"
+          },
+          {
+            "@type": "Person",
+            "name": "Антон Кораблёв"
+          },
+          {
+            "@type": "Person",
+            "name": "Владимир Тодоров"
+          },
+          {
+            "@type": "Person",
+            "name": "Ксения Гофман"
+          }
+        ],
+        "productionCompany": {
+          "@type": "Organization",
+          "name": "Matterica",
+          "url": "https://matterica.film"
+        }
+      }
+    }
   },
 };
 
 const StarRating = ({ rating }: { rating: number }) => {
-  // Convert 10-point scale to 5 stars
   const starRating = (rating / 10) * 5;
   
   return (
@@ -103,9 +226,7 @@ const StarRating = ({ rating }: { rating: number }) => {
         
         return (
           <div key={star} className="relative w-5 h-5">
-            {/* Empty star background */}
             <Star className="absolute w-5 h-5 text-muted-foreground/30" />
-            {/* Filled star with clip */}
             <div 
               className="absolute overflow-hidden" 
               style={{ width: `${fillPercentage}%` }}
@@ -143,6 +264,15 @@ const ProjectDetail = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title={project.seo.title}
+        description={project.seo.description}
+        keywords={project.seo.keywords}
+        url={`https://matterica.film/project/${project.id}`}
+        type="video.movie"
+        jsonLd={project.seo.jsonLd}
+      />
+      
       <Navigation />
       
       {/* Back Link */}
