@@ -91,7 +91,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
       {/* Image */}
       <div className={`${!isEven ? "lg:order-2" : ""}`}>
         {project.slug ? (
-          <Link to={`/projects/${project.slug}`} className="group relative block overflow-hidden cursor-pointer">
+          <Link to={`/project/${project.slug}`} className="group relative block overflow-hidden cursor-pointer">
             <motion.div 
               className="aspect-[16/10] overflow-hidden"
               whileHover={{ scale: 1.02 }}
@@ -158,7 +158,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
           className="group mb-5 font-display text-4xl font-semibold tracking-tight text-foreground md:text-5xl lg:text-6xl xl:text-7xl"
         >
           {project.slug ? (
-            <Link to={`/projects/${project.slug}`} className="relative inline-block">
+            <Link to={`/project/${project.slug}`} className="relative inline-block">
               {t(project.titleKey)}
               <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-foreground transition-all duration-500 group-hover:w-full" />
             </Link>

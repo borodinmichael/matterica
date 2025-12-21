@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import logoVideo from "@/assets/logo-animation.mp4";
+import logoVideo from "@/assets/logo-animation.mov";
 
 interface LoadingAnimationProps {
   onComplete: () => void;
